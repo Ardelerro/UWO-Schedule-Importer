@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "UWO Schedule Importer",
+  "version": "1.0",
+
+  "permissions": [
+    "identity",
+    "storage"
+  ],
+
+  "host_permissions": [
+    "*://draftmyschedule.uwo.ca/*"
+  ],
+  
+  "oauth2": {
+    "client_id": "611800740214-icn88q9bltc36cqiv0ni8456pmfio2op.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/calendar.events",
+      "https://www.googleapis.com/auth/calendar"
+
+    ]
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["https://draftmyschedule.uwo.ca/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
